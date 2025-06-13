@@ -1,5 +1,7 @@
 package interviewPrepJava;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -67,14 +69,119 @@ public class stringProblems {
 		
 	}
 	
+	static void checkIfItsAnagrams(String s1, String s2) {
+		if(s1.length()==s2.length()) {
+		char[] c1 = s1.toCharArray();
+		char[] c2 = s2.toCharArray();
+		
+		Arrays.sort(c1);
+		Arrays.sort(c2);
+		
+	 System.out.println(	Arrays.equals(c1, c2));
+	
+		}
+		else System.out.println("Not anagrams");
+		
+	}
+	
+	static void CharOccurenceCount(String s, char c) {
+		
+		HashMap<Character, Integer> map = new HashMap<>();
+		
+		for( char c1 : s.toCharArray()) {
+			map.put(c1, map.getOrDefault(c1, 0)+1);
+		}
+		
+		for(Entry<Character, Integer> entry : map.entrySet()) {
+			if(entry.getKey().equals(c)) {
+				System.out.println(entry.getValue());
+			}
+		}
+		
+	}
+	
+	static void convertStringToIntWithInbuilt(String s) {
+		
+		int num = Integer.parseInt(s);
+		System.out.println(num);
+	}
+	
+	static void convertStringToIntWithoutInbuilt(String s) {
+		int num = 0;
+		for (char c : s.toCharArray()) {
+			num = num * 10 + Character.getNumericValue(c);
+		}
+		System.out.println(num);
+		
+	}
 	
 	
+	static void containsString(String s1, String s2) {
+		
+		System.out.println(s1.contains(s2));
+		
+	}
 	
+	static void replaceAllOccurance(String s, char c) {
+		s = s.replace(c, 'm');
+		System.out.println(s);
+	}
 	
+	static void splitStringDelimiter(String s) {
+		String[] words = s.split(" ");
+	for(String word: words) {
+		System.out.println(word);
+	}
+		
+	//	Arrays.stream(words).forEach(e -> System.out.println(e));
+		
+		
+	}
+	
+	static void sortCharInString(String input) {
+		
+		char[] arr = input.toLowerCase().toCharArray();
+		Arrays.sort(arr);
+		System.out.println(arr); // aajv
+	}
+	
+	static void longestWordInSentence(String s) {
+	
+		String[] words = s.split(" ");
+	//	String longest = Arrays.stream(words).max(Comparator.comparing(String::length)).orElse("");
+	//	System.out.println(longest);
+		
+		 if (words.length == 0 || (words.length == 1 && words[0].isEmpty())) {
+		        System.out.println(""); 
+		    }
+		 String longestWord = ""; 
+		 for (String word : words) {
+		         if (word.length() > longestWord.length()) {
+		            longestWord = word; 
+		        }
+		    }
+		 System.out.println(longestWord);
+		
+	}
+	
+	static void repeatedWordsFind(String s) {
+		HashMap<String, Integer> map = new HashMap<>();
+		
+		for(String word: s.split(" ")) {
+			map.put(word, map.getOrDefault(word, 0)+1);
+		}
+		
+	//	map.entrySet().stream().filter(e-> e.getValue()>1).forEach(e -> System.out.println(e.getKey()));
+		
+		for(Entry<String, Integer> entry: map.entrySet()) {
+			if(entry.getValue()>1) {
+				System.out.println(entry.getKey() + " - " + entry.getValue() + " times ");
+			}
+		}
+		
+	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-//		reverseString("mathu");
+	//		reverseString("mathu");
 //	
 //		palindromeCheck("mom");
 //		palindromeCheck("mathu");
@@ -87,6 +194,24 @@ public class stringProblems {
 		
 	//	firstNonRepeatedCharacter("swiss");
 		
+	//	checkIfItsAnagrams("god","dog");
+	//	checkIfItsAnagrams("mathu","mathi");
+		
+	//	CharOccurenceCount("banana", 'a');
+	//	convertStringToIntWithInbuilt("2334");
+	//	convertStringToIntWithoutInbuilt("2334");
+	
+	//	containsString("Hello India", "India");
+		
+		//replaceAllOccurance("banana", 'a');
+		
+	//	splitStringDelimiter("my name is mathumathi");
+		
+	//	sortCharInString("Java");
+		
+	//	longestWordInSentence("Java is a beautiful language");
+		
+		repeatedWordsFind("Java is great and Java is powerful");
 	}
 
 }

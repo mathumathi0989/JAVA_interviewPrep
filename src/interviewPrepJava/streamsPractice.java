@@ -1,5 +1,6 @@
 package interviewPrepJava;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +32,22 @@ public class streamsPractice {
 		
 	}
 	
+	static void checkAnagramsStreams(String s1, String s2) {
+		
+		boolean isAnagram = s1.length()==s2.length() && Arrays.equals(s1.chars().sorted().toArray(), s2.chars().sorted().toArray());
+		
+		System.out.println(isAnagram);
+		
+		
+	}
+	
+	static void charCountStreams(String s, char c) {
+		
+	 long count = s.chars().filter(e -> e==c).count();
+	 
+		System.out.println(count);
+	}
+	
 	public static void main(String[] args) {
 	
 //
@@ -42,7 +59,13 @@ public class streamsPractice {
 //		palindromeStreams("0");
 //		palindromeStreams("");
 		
-		duplicateCharacterStreams("programming");
+	//	duplicateCharacterStreams("programming");
+		
+	//	checkAnagramsStreams("dog","god");
+	//	checkAnagramsStreams("mathu", "mathi");
+		
+		charCountStreams("banana", 'a');
+		
 	}
 
 }
